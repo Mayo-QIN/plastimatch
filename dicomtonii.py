@@ -19,11 +19,11 @@ def converter(input_dicom,input_zip=[],output='output'):
 	cwd = os.getcwd()
 	print 'Current directory'
 	print cwd
-	outputfolder=output
-	if not os.path.exists(outputfolder):
-		os.makedirs(outputfolder)
+	# Grunt will unzip the files in a folder named input_dicom
+	# have to find the folder that contains the dicoms
 	# Get all the data based on the search key-- these data consist of the nifti file and a zip version of the original nifti
-	command='plastimatch convert --input %s --output-img %s'%(input_dicom,outputfolder)
+	curdir,folderdicomfiles=os.walk(cwd+'/input_dicom/').next()
+	command='plastimatch convert --input %s --output-img %s'%(cwd+'/input_dicom/'+folderdicomfiles[0],cwd)
 	print 'Running'
 	print  command
 	subprocess.call(command, shell=True)
