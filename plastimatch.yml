@@ -46,4 +46,4 @@ services:
   - endPoint: convertodicom
     commandLine: ["python","/niitodicom.py", "-i","<input_nii","-o", "~output"]
   - endPoint: convertonifti
-    commandLine: ["python","/dicomtonii.py", "-i","~input_dicom","-o", ">output"]
+    commandLine: ["python","/dicomtonii.py", "-i","^input_dicom","-o", ">output"]
