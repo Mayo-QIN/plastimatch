@@ -22,7 +22,7 @@
 # NB: we request the output file using the "out" parameter, not the filename we requested
 
 # Here is the copy example using jq(http://stedolan.github.io/jq/) to help a bit
-# 
+#
 # id=`curl --silent -X POST --form in=#README.md --form out=small_file.txt localhost:9901/rest/service/copy | jq -r .uuid`
 # wget --content-disposition localhost:9901/rest/job/$id/file/output
 
@@ -45,3 +45,5 @@ warnLevel: 5
 services:
   - endPoint: convertodicom
     commandLine: ["python","/niitodicom.py", "-i","<input_nii","-o", "~output"]
+  - endPoint: convertonifti
+    commandLine: ["python","/dicomtonii.py", "-i","~input_dicom","-o", ">output"]
