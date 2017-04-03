@@ -33,6 +33,8 @@ RUN rm -rf /var/lib/{apt,dpkg,cache,log}/ /tmp/* /var/tmp/*
 
 # Copy code and configuration files
 COPY niitodicom.py ./
+COPY dicomtonii.py ./
+RUN chmod +x dicomtonii.py
 RUN chmod +x niitodicom.py
 COPY plastimatch.yml /grunt.d/gruntfile.yml
 # What do we run on startup?
